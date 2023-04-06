@@ -1,15 +1,22 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: Auto Minify
+uses: nizarmah/auto-minify@v2.1.1
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  check-bats-version:
+  auto-minify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
-      - name: Auto Minify
-      - uses: nizarmah/auto-minify@v2.1.1
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Auto Minify
+      uses: actions/upload-artifact@v2
+      with:
+        name: minified-files
+        path: |
+          **/*.html
+          **/*.css
+          **/*.js
