@@ -1,5 +1,4 @@
-name: Auto Minify
-uses: nizarmah/auto-minify@v2.1.1
+name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
@@ -12,3 +11,5 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
+      - name: Auto Minify
+      - uses: nizarmah/auto-minify@v2.1.1
