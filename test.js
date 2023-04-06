@@ -1,6 +1,6 @@
 console.log('asdasdasd');
 
-
+var ll;
 
 var ok=0;
 
